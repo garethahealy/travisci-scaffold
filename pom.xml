@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
     <groupId>com.garethahealy.travisci-scaffold</groupId>
-    <artifactId>jolokia-travisci-scaffold-parent</artifactId>
+    <artifactId>travisci-scaffold-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <name>GarethHealy :: Travis-CI Scaffold</name>
