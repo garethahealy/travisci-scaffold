@@ -19,3 +19,5 @@ target/
 # General #
 tmp/
 *.tmp
+
+travis-encrypt.sh
