@@ -8,6 +8,7 @@
 # FOR A PARTICULAR PURPOSE. You should have received a copy of GPLv3
 # along with this software; if not, see http://www.gnu.org/licenses/gpl.txt
 #
+# https://raw.githubusercontent.com/OpenSCAP/container-compliance/master/oscap-docker
 
 set -e -o pipefail
 
