@@ -8,6 +8,8 @@ addons:
     - shellcheck
     - libopenscap8
     - libxml2-utils
+    - nodejs
+    - npm
   sonarqube:
     organization: garethahealy-github
     token:
@@ -27,6 +29,7 @@ install:
 - bash .travis/update.sh
 - export M2_HOME=/usr/share/maven3 && export PATH=${M2_HOME}/bin:${PATH} && export MAVEN_OPTS="-Xms2048m -Xmx2048m"
 - java -version && javac -version && mvn -version -B
+- npm install -g dockerfile_lint
 before_script:
 - mvn dependency:resolve-plugins dependency:resolve -B -Prelease-ossrh
 - find . -type f -name "*.sh" -exec shellcheck -e SC2154 {} \;
