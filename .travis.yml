@@ -26,16 +26,15 @@ jdk:
 before_install:
 - bash .travis/deploy-codesigning.sh
 install:
-- bash .travis/update.sh
-- export M2_HOME=/usr/share/maven3 && export PATH=${M2_HOME}/bin:${PATH} && export MAVEN_OPTS="-Xms2048m -Xmx2048m"
-- java -version && javac -version && mvn -version -B
+- mvn -N io.takari:maven:wrapper -Dmaven=3.5.0
+- java -version && javac -version && ./mvnw -version -B
 - npm install -g dockerfile_lint
 before_script:
-- mvn dependency:resolve-plugins dependency:resolve -B -Prelease-ossrh
+- ./mvnw dependency:go-offline -B -Prelease-ossrh
 - find . -type f -name "*.sh" -exec shellcheck -e SC2154 {} \;
 script:
-- mvn clean install -B -Dgpg.skip=true
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -B
+- ./mvnw clean install -B -Dgpg.skip=true
+- ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -B
 before_deploy:
 - docker pull registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:1.1
 - sudo bash .travis/oscap-docker image-cve registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:1.1 --results results.xml
