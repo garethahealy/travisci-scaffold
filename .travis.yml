@@ -2,10 +2,7 @@ sudo: required
 dist: trusty
 addons:
   apt:
-    sources:
-    - debian-sid
     packages:
-    - libxml2-utils
     - nodejs
     - npm
   sonarqube:
