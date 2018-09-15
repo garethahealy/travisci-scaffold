@@ -5,7 +5,6 @@ addons:
     sources:
     - debian-sid
     packages:
-    - libopenscap8
     - libxml2-utils
     - nodejs
     - npm
@@ -34,9 +33,6 @@ before_script:
 script:
 - ./mvnw clean install -B -Dgpg.skip=true
 - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -B
-before_deploy:
-- docker pull registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:1.1
-- sudo bash .travis/oscap-docker image-cve registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:1.1 --results results.xml
 deploy:
   provider: script
   script: bash .travis/deploy.sh
