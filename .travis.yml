@@ -25,7 +25,7 @@ install:
 - java -version && javac -version && ./mvnw -version -B
 - npm install -g dockerfile_lint
 before_script:
-- ./mvnw dependency:go-offline -B -Prelease-ossrh
+- ./mvnw de.qaware.maven:go-offline-maven-plugin:resolve-dependencies -DdownloadSources -DdownloadJavadoc -B -Prelease-ossrh
 - find . -type f -name "*.sh" -exec shellcheck -e SC2154 {} \;
 script:
 - ./mvnw clean install -B -Dgpg.skip=true
